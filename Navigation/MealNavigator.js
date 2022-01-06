@@ -17,6 +17,7 @@ import FilterScreen from "../Screens/FilterScreen";
 
 const defaultStackOptions={
 
+
     defaultNavigationOptions: {
 
         headerStyle: {

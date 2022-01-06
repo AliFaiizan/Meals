@@ -2,7 +2,7 @@ import React, {useState} from 'react'
 import {Platform, StyleSheet, Text, View, ScrollView, Image} from 'react-native'
 import {HeaderButtons, Item} from "react-navigation-header-buttons";
 import HeaderBtn from '../Components/HeaderButton';
-import Colors from "../Constants/Colors";
+
 
 
 const ListItem=(props)=>{
@@ -20,6 +20,7 @@ const MealDetailScreen = (props) => {
 
 
     return (
+        <View style={styles.screen}>
         <ScrollView>
            <Image source={{uri:itemData.item.imageUrl}} style={styles.image} />
            <View style={styles.details}>
@@ -37,6 +38,7 @@ const MealDetailScreen = (props) => {
                 return <ListItem >{step}</ListItem>
             })}
         </ScrollView>
+        </View>
     )
 };
 MealDetailScreen.navigationOptions= (navigationData)=>{
@@ -59,6 +61,9 @@ MealDetailScreen.navigationOptions= (navigationData)=>{
 export default MealDetailScreen
 
 const styles = StyleSheet.create({
+    screen:{
+      backgroundColor:'#202020'
+    },
     details:{
         flexDirection:'row',
         padding:15,
@@ -70,10 +75,12 @@ const styles = StyleSheet.create({
     },
     text:{
         fontFamily:'open-sans',
+        color:'white'
     },
     title:{
         fontFamily: 'open-sans-bold',
         textAlign:'center',
+        color:'orange'
     },
 
     listItem:{

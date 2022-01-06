@@ -2,18 +2,20 @@ import React from 'react'
 
 import Colors from "../Constants/Colors";
 import MealList from "../Components/MealList";
-import {MEALS} from "../data/dummyData";
+
 import {HeaderButtons, Item} from "react-navigation-header-buttons";
 import HeaderBtn from "../Components/HeaderButton";
+import {useSelector} from "react-redux";
+
+
 
 const FavouriteScreen = ({navigation}) => {
 
-    const FavMeal= MEALS.filter((item)=>{
-        return item.id==='m1'||item.id==='m2'
-    });
+    const favMeals=useSelector(state => state.meals.favouriteMeals);
+
 
     return (
-       <MealList data={FavMeal} navigation={navigation} fromFav={true}/>
+       <MealList data={favMeals} navigation={navigation} fromFav={true}/>
     )
 };
 

@@ -1,13 +1,17 @@
 import React from 'react'
-import {CATEGORIES,MEALS} from '../data/dummyData'
+import {CATEGORIES} from '../data/dummyData'
 import MealList from "../Components/MealList";
+
+import {useSelector} from "react-redux";
 
 
 const CatagoryMealScreen = (props) => {
 
+    const availableMeals= useSelector(state => state.meals.filteredMeals);
+
     const cId = props.navigation.getParam("categoryId", "NO-ID");
 
-    const displayMeal= MEALS.filter( (item  ) => {
+    const displayMeal= availableMeals.filter( (item  ) => {
         return item.category.indexOf(cId)>=0;
     } );
 
@@ -25,7 +29,6 @@ CatagoryMealScreen.navigationOptions = (navigationData) => {
 
     return {
         headerTitle: selectedCat.title
-
     }
 };
 export default CatagoryMealScreen;
