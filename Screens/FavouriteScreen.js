@@ -1,5 +1,5 @@
 import React from 'react'
-
+import {View,Text} from 'react-native'
 import Colors from "../Constants/Colors";
 import MealList from "../Components/MealList";
 
@@ -9,11 +9,15 @@ import {useSelector} from "react-redux";
 
 
 
+
 const FavouriteScreen = ({navigation}) => {
 
     const favMeals=useSelector(state => state.meals.favouriteMeals);
-
-
+    if(favMeals.length===0 || !favMeals ){
+        return <View style={{flex:1,backgroundColor:'#202020',alignItems:'center',justifyContent:'center'}}>
+            <Text style={{color:'white',fontWeight:'bold'}}>No Favourite Meals Found.</Text>
+        </View>
+    }
     return (
        <MealList data={favMeals} navigation={navigation} fromFav={true}/>
     )
